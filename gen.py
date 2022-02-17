@@ -14,6 +14,7 @@ parser = argparse.ArgumentParser(description = 'Delegate to Cosmos Hub validator
 parser.add_argument('--amount', type = int, default = 1, help = 'Amount to delegate to each')
 parser.add_argument('--from-address', type = str, default = 'gravity1zk4uwzygs4k2k5cz7y759sxcnv6qt3pd4g3pqq', help = 'Address to send grav from (default new-new-bom)')
 parser.add_argument('--output-file', type = str, default = now.strftime("%d-%m-%Y/unsigned") + '.json', help = 'Filename to write')
+parser.add_argument('--denom', type = str, default = "ugraviton", help = 'Denomination of the staking token, defaults to ugraviton')
 args = parser.parse_args()
 # month = args.month[0]
 # months = {
@@ -60,10 +61,10 @@ for val in validators:
       # amt_dnm = amount[-5:]
       msg = {
           "@type": "/cosmos.staking.v1beta1.MsgDelegate",
-          "delegator_address": "gravity1zk4uwzygs4k2k5cz7y759sxcnv6qt3pd4g3pqq", # new-new-bom
+          "delegator_address": str(args.from_address), # new-new-bom
           "validator_address": val,
           'amount': {
-            'denom': 'ugraviton',
+            'denom': str(args.denom),
             'amount': str(args.amount)
           }
       }
