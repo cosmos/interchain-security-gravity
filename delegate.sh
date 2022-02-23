@@ -14,7 +14,7 @@ DENOM=stake
 #USER=alice
 # MEMONIC="plunge hundred health electric victory foil marine elite shiver tonight away verify vacuum giant pencil ocean nest pledge okay endless try spirit special start"
 USER=alice
-MEMONIC="shuffle oppose diagram wire rubber apart blame entire thought firm carry swim old head police panther lyrics road must silly sting dirt hard organ"
+# MEMONIC="shuffle oppose diagram wire rubber apart blame entire thought firm carry swim old head police panther lyrics road must silly sting dirt hard organ"
 CHAIN_ID=toka-test
 
 # TODO add condition to check if user exists then create

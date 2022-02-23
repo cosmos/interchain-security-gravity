@@ -11,6 +11,7 @@ import (
 )
 
 var (
+	memonic *string
 	binary  *string
 	denom   *string
 	chainID *string
@@ -53,6 +54,8 @@ func init() {
 	denom = stakeCmd.Flags().String("denom", "stake", "denomination of token, default is stake")
 	chainID = stakeCmd.Flags().
 		String("chain-id", "toka-test", "chain id of the network, default is toka-test")
+	memonic = stakeCmd.Flags().
+		String("memonic", "shuffle oppose diagram wire rubber apart blame entire thought firm carry swim old head police panther lyrics road must silly sting dirt hard organ", 'memonic of key of the grantee, default is "shuffle oppose diagram wire rubber apart blame entire thought firm carry swim old head police panther lyrics road must silly sting dirt hard organ" ')
 	amount = stakeCmd.Flags().
 		Int("amount", 0, "sets the amount to be staked, default is 0 which means all available tokens")
 }
