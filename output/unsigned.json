@@ -1,0 +1,129 @@
+{
+  "body": {
+    "messages": [
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1zv4650adjtwm9g3mk87gz38j6p83dhxgytprlj",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1zarj77frdpvj97qktselfcppwcvf4ujn35a2ps",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1y74l34x9fymytvcj69zklpvem586nglnp5x7pg",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons16dsywwgwlm6fuucpngw4e39pk0jslhykn8s6dq",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1rnknqueazcju3x4knpnhvpksudanva4f08558z",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1vcmxp3702d39cmh308d5gd8c8nc4jlulgp5zsg",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons18u6h40lz9xcs5zr6v7sfnl3fa9vkqrle4qwejk",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1pp7l0a8eqmd3zpmmmsc9pmarcj0r7peset258c",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1awv3xxxz2u220flh2w0863xrjdctv43wseh82z",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons162kluwqt5t5vw9gej5cftg98fh5yh4zv22kzae",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1yqxr2xn0728lagq3tsknrxwpemxwr9znw6hmna",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons19tsaq7xqyn697g38a0vj0dzwp46k3v627cm460",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1gntaqpqcrhc836xjfz92rmvypf2tyggxus2t77",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1e84kgn6n2jrzsl8jm346x6pmfw9avmyhn7zxsr",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1desmn5ktgg5hsrzj5rreuvl3wmvr7qu6qax0fn",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1ut5a2q6ut2846ryhd68597wmxuw6mnfjzzg7nn",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1p6d86pkynv0d6s5npx3snnk9vnhg652swpqg3p",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons14d9qtqgs78qg8tw65ma0dxykaalcydt568kqte",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      },
+      {
+        "@type": "/cosmos.staking.v1beta1.MsgDelegate",
+        "delegator_address": "cosmos1jxd2uhx0j6e59306jq3jfqs7rhs7cnhvey4lqh",
+        "validator_address": "cosmosvalcons1qaszt3n25xsrmpz0nzls84s39nqedvgx0q7npq",
+        "amount": { "denom": "uatom", "amount": "52631515" }
+      }
+    ],
+    "memo": "",
+    "timeout_height": "0",
+    "extension_options": [],
+    "non_critical_extension_options": []
+  },
+  "auth_info": {
+    "signer_infos": [],
+    "fee": { "amount": [], "gas_limit": "2000000", "payer": "", "granter": "" }
+  },
+  "signatures": []
+}
