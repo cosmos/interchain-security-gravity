@@ -11,7 +11,6 @@ MAX_AMOUNT=${MAX_AMOUNT}
 
 FROM_ADDRESS=$($BINARY keys show $GRANTER -a) # delegator address
 echo From Address $FROM_ADDRESS
-# add user to keyring
 
 # withdraw rewards for delegator if exists
 $BINARY tx distribution withdraw-all-rewards --from $GRANTER -y
@@ -40,4 +39,4 @@ jq '.validators' output/unsigned.json
 # run authz tx commands for doing delegation
 # execute the output of gen.py as a payload for authz tx
 echo executing authz from grantee account: $GRANTEE
-$BINARY tx authz exec output/unsigned.json --from $GRANTEE --fees 200$DENOM --fee-account $FROM_ADDRESS -y
+$BINARY tx authz exec output/unsigned.json --from $GRANTEE --gas-prices 0uatom --fees 200$DENOM --fee-account $FROM_ADDRESS -y
