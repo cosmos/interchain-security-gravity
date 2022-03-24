@@ -1,0 +1,36 @@
+name: Run Delegation Script
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run-delegation-script:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: install dependencies
+        with:
+          env-file: ./first_acc.env
+        run: |
+          # update basic
+          # install dependencies
+          apt-get update && apt-get install wget bash jq python3 -y && \
+          # download gravity bin
+          wget https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download/v1.4.0/gravity-linux-amd64 && \
+          # configure gravity
+          mv gravity-linux-amd64 gravity && \
+          chmod +x gravity && \
+          mv gravity /usr/bin/
+      - name: setup authz account
+        run: |
+          gravity init delegation-bot --chain-id ${{ env.CHAIN_ID }} && \
+          wget https://raw.githubusercontent.com/Gravity-Bridge/gravity-docs/main/genesis.json && \
+          cp genesis.json $HOME/.gravity/config/genesis.json && \
+          echo ${{ secrets.AUTHZ_PHRASES }} | gravity keys add gravity-bot --keyring-backend test --recover
+      - name: 🍽️ Checkout the repo
+        uses: actions/checkout@feature/scripting_for_validator_delegation
+        with:
+          fetch-depth: 1
+      - name: 🚀 Run Automation
+        run: ls && pwd && ./delegate.sh

@@ -1,11 +1,5 @@
 #!/bin/bash
 
-# importing env vars for delegation
-# TODO create another env file and source it on another run so that we can delegate via 2 wallets using authz
-source ./env.sh
-
-echo $FROM_ADDRESS
-
 # env vars
 GRANTER=${GRANTER:-alice}
 GRANTEE=${GRANTEE:-bob}
@@ -13,7 +7,9 @@ BINARY=${BINARY:-simd}
 DENOM=${DENOM:-stake}
 MAX_AMOUNT=${MAX_AMOUNT}
 FROM_ADDRESS=${FROM_ADDRESS}
-DEFAULT_FLAGS='--chain-id gravity-bridge-3 --node https://gravitychain.io:26657'
+NODE=${NODE:-'http://localhost:26657'}
+CHAIN_ID=${CHAIN_ID}
+DEFAULT_FLAGS='--chain-id $CHAIN_ID --node $NODE'
 
 if [[ -z $FROM_ADDRESS ]]; then
 	FROM_ADDRESS=$($BINARY keys show $GRANTER -a $DEFAULT_FLAGS) # delegator address
