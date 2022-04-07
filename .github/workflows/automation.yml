@@ -10,8 +10,6 @@ jobs:
     runs-on: ubuntu-20.04
     steps:
       - name: install dependencies
-        with:
-          env-file: ./first_acc.env
         run: |
           # update basic
           # install dependencies
