@@ -27,7 +27,7 @@ jobs:
           cp genesis.json $HOME/.gravity/config/genesis.json && \
           echo ${{ secrets.AUTHZ_PHRASES }} | gravity keys add gravity-bot --keyring-backend test --recover
       - name: 🍽️ Checkout the repo
-        uses: actions/checkout@feature/scripting_for_validator_delegation
+        uses: actions/checkout@v2
         with:
           fetch-depth: 1
       - name: 🚀 Run Automation
