@@ -8,8 +8,8 @@ DENOM=${DENOM:-stake}
 MAX_AMOUNT=${MAX_AMOUNT}
 FROM_ADDRESS=${FROM_ADDRESS}
 NODE=${NODE:-'http://localhost:26657'}
-CHAIN_ID=${CHAIN_ID}
-DEFAULT_FLAGS='--chain-id $CHAIN_ID --node $NODE'
+CHAIN_ID=${CHAIN_ID:-test-chain-id}
+DEFAULT_FLAGS='--chain-id '$CHAIN_ID' --node '$NODE
 
 if [[ -z $FROM_ADDRESS ]]; then
 	FROM_ADDRESS=$($BINARY keys show $GRANTER -a $DEFAULT_FLAGS) # delegator address

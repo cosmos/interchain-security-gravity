@@ -1,0 +1,46 @@
+name: Run Delegation Script
+
+on:
+  push:
+    branches:
+      - main
+      - feature/github_action_minor_bug_fix
+
+jobs:
+  run-delegation-script:
+    runs-on: ubuntu-20.04
+    environment: delegation_env
+    steps:
+      - name: 🍽️ Checkout the repo
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 1
+      - name: install dependencies
+        env:
+          CHAIN_ID: ${{ secrets.CHAIN_ID }}
+        run: |
+          # update basic
+          # install dependencies
+          sudo apt-get update && sudo apt-get install wget bash jq python3 -y && \
+          # download gravity bin
+          wget https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download/v1.4.0/gravity-linux-amd64 && \
+          # configure gravity
+          mv gravity-linux-amd64 gravity && \
+          chmod +x gravity && \
+          sudo mv gravity /usr/bin/
+      - name: setup authz account
+        run: |
+          gravity init delegation-bot --chain-id ${{ secrets.CHAIN_ID }} && \
+          wget https://raw.githubusercontent.com/Gravity-Bridge/gravity-docs/main/genesis.json && \
+          cp genesis.json $HOME/.gravity/config/genesis.json && \
+          echo ${{ secrets.AUTHZ_PHRASES }} | gravity keys add gravity-bot --keyring-backend test --recover
+      - name: Run Automation
+        env:
+          DENOM: ugraviton
+          BINARY: gravity
+          GRANTEE: gravity-bot
+          FROM_ADDRESS: gravity1c4t4aqe74yyz624dm44u6xhfz9p8rx4f90jxjl
+          MAX_AMOUNT: 10
+          CHAIN_ID: gravity-bridge-3
+          NODE: 'https://gravitychain.io:26657'
+        run: ./delegate.sh
