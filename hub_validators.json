@@ -1,0 +1,23 @@
+{
+  "validators": [
+    { "address": "cosmosvalcons1zv4650adjtwm9g3mk87gz38j6p83dhxgytprlj" },
+    { "address": "cosmosvalcons1zarj77frdpvj97qktselfcppwcvf4ujn35a2ps" },
+    { "address": "cosmosvalcons1y74l34x9fymytvcj69zklpvem586nglnp5x7pg" },
+    { "address": "cosmosvalcons16dsywwgwlm6fuucpngw4e39pk0jslhykn8s6dq" },
+    { "address": "cosmosvalcons1rnknqueazcju3x4knpnhvpksudanva4f08558z" },
+    { "address": "cosmosvalcons1vcmxp3702d39cmh308d5gd8c8nc4jlulgp5zsg" },
+    { "address": "cosmosvalcons18u6h40lz9xcs5zr6v7sfnl3fa9vkqrle4qwejk" },
+    { "address": "cosmosvalcons1pp7l0a8eqmd3zpmmmsc9pmarcj0r7peset258c" },
+    { "address": "cosmosvalcons1awv3xxxz2u220flh2w0863xrjdctv43wseh82z" },
+    { "address": "cosmosvalcons162kluwqt5t5vw9gej5cftg98fh5yh4zv22kzae" },
+    { "address": "cosmosvalcons1yqxr2xn0728lagq3tsknrxwpemxwr9znw6hmna" },
+    { "address": "cosmosvalcons19tsaq7xqyn697g38a0vj0dzwp46k3v627cm460" },
+    { "address": "cosmosvalcons1gntaqpqcrhc836xjfz92rmvypf2tyggxus2t77" },
+    { "address": "cosmosvalcons1e84kgn6n2jrzsl8jm346x6pmfw9avmyhn7zxsr" },
+    { "address": "cosmosvalcons1desmn5ktgg5hsrzj5rreuvl3wmvr7qu6qax0fn" },
+    { "address": "cosmosvalcons1ut5a2q6ut2846ryhd68597wmxuw6mnfjzzg7nn" },
+    { "address": "cosmosvalcons1p6d86pkynv0d6s5npx3snnk9vnhg652swpqg3p" },
+    { "address": "cosmosvalcons14d9qtqgs78qg8tw65ma0dxykaalcydt568kqte" },
+    { "address": "cosmosvalcons1qaszt3n25xsrmpz0nzls84s39nqedvgx0q7npq" }
+  ]
+}
