@@ -1,10 +1,8 @@
 name: Run Delegation Script
 
 on:
-  push:
-    branches:
-      - main
-      - feature/github_action_minor_bug_fix
+  schedule:
+  - cron: "0 5 1,15 * *"
 
 jobs:
   run-delegation-script:
@@ -36,11 +34,11 @@ jobs:
           echo ${{ secrets.AUTHZ_PHRASES }} | gravity keys add gravity-bot --keyring-backend test --recover
       - name: Run Automation
         env:
-          DENOM: ugraviton
-          BINARY: gravity
-          GRANTEE: gravity-bot
-          FROM_ADDRESS: gravity1c4t4aqe74yyz624dm44u6xhfz9p8rx4f90jxjl
-          MAX_AMOUNT: 10
-          CHAIN_ID: gravity-bridge-3
-          NODE: 'https://gravitychain.io:26657'
+          DENOM: ${{ secrets.DENOM }}
+          BINARY: ${{ secrets.BINARY }}
+          GRANTEE: ${{ secrets.GRANTEE }}
+          FROM_ADDRESS: ${{ secrets.FROM_ADDRESS }}
+          CHAIN_ID: ${{ secrets.CHAIN_ID }}
+          MAX_AMOUNT: ${{ secrets.MAX_AMOUNT }}
+          NODE: ${{ secrets.NODE }}
         run: ./delegate.sh
