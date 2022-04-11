@@ -10,7 +10,7 @@ CHAIN_ID=${CHAIN_ID:-test-chain-id}
 DEFAULT_FLAGS='--chain-id '$CHAIN_ID' --node '$NODE
 
 if [[ -z $FROM_ADDRESS ]]; then
-	FROM_ADDRESS=$("$BINARY" keys show "$GRANTER" -a "$DEFAULT_FLAGS") # delegator address
+	FROM_ADDRESS=$("$BINARY" keys show "$GRANTER" -a --node "$NODE") # delegator address
 fi
 
 echo From Address "$FROM_ADDRESS"
