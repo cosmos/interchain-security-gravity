@@ -1,9 +1,9 @@
 name: Run Delegation Script
 
 on:
-  schedule:
-    # - cron: "* * 1,15 * *"
-    - cron: "0/15 * * * *" # TODO: revert back to bi monthly deployment
+  [push]
+  #schedule:
+  # - cron: "* * 1,15 * *"
 
 jobs:
   run-delegation-script:
