@@ -2,8 +2,8 @@ name: Run Delegation Script
 
 on:
   schedule:
-    # - cron: "0 5 1,15 * *"
-    - cron: "*/15 * * * *" # TODO: revert back to bi monthly deployment
+    # - cron: "* * 1,15 * *"
+    - cron: "0/15 * * * *" # TODO: revert back to bi monthly deployment
 
 jobs:
   run-delegation-script:
@@ -21,6 +21,10 @@ jobs:
     steps:
       - name: slack - GitHub Actions Slack integration
         uses: act10ns/slack@v1.5.0
+        with:
+          status: ${{ job.status }}
+          channel: "#cosmoshub-alerts"
+          steps: ${{ toJson(steps) }}
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: 🍽️ Checkout the repo
