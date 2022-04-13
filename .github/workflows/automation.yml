@@ -1,7 +1,7 @@
 name: Run Delegation Script
 on:
   schedule:
-    - cron: "15 18 13 * *"
+    - cron: "10 10 14 * *"
 
 jobs:
   run-delegation-script:
