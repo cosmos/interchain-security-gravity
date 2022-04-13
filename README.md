@@ -1,18 +1,27 @@
 # Gravity Delegations Tool
 
+A convenience tool designed to periodically run delegations for a wallet.
+the script can execute via cli or github actions.
+Please refer to the `.github/workflows/automation.yml` for details.
+
 ### Environment Variables
 
-the following Environment variables need to be configured
+| Key              | Default | Description                                                                                                | Required |
+| ---------------- | ------- | ---------------------------------------------------------------------------------------------------------- | -------- |
+| FROM_ADDRESS     | alice   | the complete address of the main account                                                                   | [x]      |
+| CHAIN_ID         |         | current chain id of target chain                                                                           | [x]      |
+| SLACK_WEBHOOK_UR |         | Bot webhook url. Refer [slack roles](https://slack.com/help/articles/360018112273-Types-of-roles-in-Slack) | [x]      |
+| NODE             |         | address of mainnet node of target chain                                                                    | [x]      |
+| GRANTER          | alice   | the human readable wallet name as registered on the server                                                 | []       |
+| GRANTEE          | bob     | Human readable authz wallet name as registered on the server                                               | []       |
+| AUTHZ_PHRASES    |         | memonic of authz enabled key                                                                               | [x]      |
+| BINARY           | simd    | binary of undrelying chain                                                                                 | [x]      |
+| DENOM            | stake   | Denomination of chain currency                                                                             | [x]      |
+| MAX_AMOUNT       |         | if set the delegation amount will be                                                                       | []       |
 
-| Key        | Default |
-| ---------- | ------- |
-| GRANTER    | alice   |
-| GRANTEE    | bob     |
-| BINARY     | simd    |
-| DENOM      | stake   |
-| MAX_AMOUNT |         |
-
-if MAX_AMOUNT is not set the total amount currently held by the granter will be delegated
+NOTE: if using github actions please set variables as secrets in settings
+the script requires for the `FROM_ADDRESS` to be set or the `GRANTER` to be passed. Future update would extend the same functionality to `AUTHZ_PHRASES` and `GRANTEE`
+if MAX_AMOUNT is not set the total amount held by the granter will get delegated
 
 ### Executables
 
