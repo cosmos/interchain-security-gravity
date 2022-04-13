@@ -7,30 +7,31 @@ BINARY=${BINARY:-simd}
 DENOM=${DENOM:-stake}
 NODE=${NODE:-'http://localhost:26657'}
 CHAIN_ID=${CHAIN_ID:-test-chain-id}
-DEFAULT_FLAGS='--chain-id '$CHAIN_ID' --node '$NODE
+NODE='--node='"$NODE"
+CHAIN_ID='--chain-id='"$CHAIN_ID"
 
 if [[ -z $FROM_ADDRESS ]]; then
-	FROM_ADDRESS=$("$BINARY" keys show "$GRANTER" -a --node "$NODE") # delegator address
+	FROM_ADDRESS=$("$BINARY" keys show "$GRANTER" -a "$NODE") # delegator address
 fi
 
 echo From Address "$FROM_ADDRESS"
 
-# withdraw rewards for delegator if exists
-"$BINARY" tx distribution withdraw-all-rewards --from "$FROM_ADDRESS" --generate-only "$DEFAULT_FLAGS" >./output/withdraw.json
-"$BINARY" tx authz exec output/withdraw.json --from "$GRANTEE" --fees 0"$DENOM" "$DEFAULT_FLAGS" --keyring-backend test -y
+# # withdraw rewards for delegator if exists
+# "$BINARY" tx distribution withdraw-all-rewards "$NODE" "$CHAIN_ID" --keyring-backend test --from "$FROM_ADDRESS" --generate-only >./output/withdraw.json
+# "$BINARY" tx authz exec output/withdraw.json --from "$GRANTEE" --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
 
 # get account balance
-BALANCE=$("$BINARY" q bank balances "$FROM_ADDRESS" --output json "$DEFAULT_FLAGS" | jq --arg DENOM "$DENOM" -r '.balances | map(select(.denom==$DENOM))[0].amount')
+BALANCE=$("$BINARY" q bank balances "$FROM_ADDRESS" --output json "$CHAIN_ID" "$NODE" | jq --arg DENOM "$DENOM" -r '.balances | map(select(.denom==$DENOM))[0].amount')
 echo "Balance: $BALANCE"
 
 # get total validators
 TOTALVALS=$(jq '.validators | length' validators.json)
 echo "Totalvals: $TOTALVALS"
 
-DELEGATION_AMOUNT=$("$BALANCE" / "$TOTALVALS")
+DELEGATION_AMOUNT=$((BALANCE / TOTALVALS))
 echo Delegation Amount: "$DELEGATION_AMOUNT"
 
-if [[ -n $MAX_AMOUNT ]] && [[ $DELEGATION_AMOUNT > $MAX_AMOUNT ]]; then
+if [[ $MAX_AMOUNT ]] && [[ $DELEGATION_AMOUNT > $MAX_AMOUNT ]]; then
 	DELEGATION_AMOUNT=$MAX_AMOUNT
 	echo DELEGATION_AMOUNT after MAX_AMOUNT check: "$DELEGATION_AMOUNT"
 fi
@@ -44,4 +45,4 @@ jq '.validators' output/unsigned.json
 # run authz tx commands for doing delegation
 # execute the output of gen.py as a payload for authz tx
 echo executing authz from grantee account: "$GRANTEE"
-"$BINARY" tx authz exec output/unsigned.json --from "$GRANTEE" --gas 2000000 --fees 0"$DENOM" "$DEFAULT_FLAGS" --keyring-backend test -y
+"$BINARY" tx authz exec output/unsigned.json --from "$GRANTEE" --gas auto --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y

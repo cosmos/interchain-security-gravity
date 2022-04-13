@@ -1,8 +1,7 @@
 name: Run Delegation Script
 on:
-  [push]
-  # schedule:
-  #   - cron: "4/15 * * * *"
+  schedule:
+    - cron: "15 18 13 * *"
 
 jobs:
   run-delegation-script:

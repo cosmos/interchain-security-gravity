@@ -8,15 +8,15 @@ Please refer to the `.github/workflows/automation.yml` for details.
 
 | Key              | Default | Description                                                                                                | Required |
 | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------- | -------- |
-| FROM_ADDRESS     | alice   | the complete address of the main account                                                                   | [x]      |
-| CHAIN_ID         |         | current chain id of target chain                                                                           | [x]      |
 | SLACK_WEBHOOK_UR |         | Bot webhook url. Refer [slack roles](https://slack.com/help/articles/360018112273-Types-of-roles-in-Slack) | [x]      |
-| NODE             |         | address of mainnet node of target chain                                                                    | [x]      |
-| GRANTER          | alice   | the human readable wallet name as registered on the server                                                 | []       |
-| GRANTEE          | bob     | Human readable authz wallet name as registered on the server                                               | []       |
-| AUTHZ_PHRASES    |         | memonic of authz enabled key                                                                               | [x]      |
 | BINARY           | simd    | binary of undrelying chain                                                                                 | [x]      |
+| NODE             |         | address of mainnet node of target chain                                                                    | [x]      |
 | DENOM            | stake   | Denomination of chain currency                                                                             | [x]      |
+| CHAIN_ID         |         | current chain id of target chain                                                                           | [x]      |
+| FROM_ADDRESS     | alice   | the complete address of the wallet holding the tokens                                                      | [x]      |
+| AUTHZ_PHRASES    |         | memonic of authz enabled wallet                                                                            | [x]      |
+| GRANTEE          | bob     | Human readable authz wallet name as registered on the server                                               | [x]      |
+| GRANTER          | alice   | the human readable wallet name as registered on the server                                                 | []       |
 | MAX_AMOUNT       |         | if set the delegation amount will be                                                                       | []       |
 
 NOTE: if using github actions please set variables as secrets in settings
@@ -40,8 +40,7 @@ chmod +x delegate.sh
 ### Prerequisites
 
 - Ensure a list of validators can be found at the root dir named `validators.json`
-- Install binary of chain in question and join their mainnet (statesync using snapsnots is recommended)
-- In order to allow for smooth functioning of this script a GRANTEE needs to be configured
+- In order to allow for smooth functioning of this script an authz GRANTEE needs to be configured
 
 This key requires the following permissions
 
@@ -51,13 +50,19 @@ This key requires the following permissions
 $BINARY tx authz grant $($BINARY keys show $GRANTEE -a) generic --msg-type=/cosmos.gov.v1beta1.MsgDelegation --from $GRANTER --fees 200$DENOM
 ```
 
-- FeeGrant
+- MsgWithdrawAll
 
 ```bash
-$BINARY tx feegrant grant $(BINARY keys show $GRANTER -a) $(gaiad keys show $GRANTEE -a) --spend-limit 10000uatom --expiration 2023-01-30T15:04:05Z --fees 200$DENOM
+$BINARY tx authz grant $($BINARY keys show $GRANTEE -a) generic --msg-type=/cosmos.gov.v1beta1.MsgWithdrawAll --from $GRANTER --fees 200$DENOM
 ```
 
-### Running the delegation script
+### Github actions
+
+The script executes at a fixed interval via github actions refer `.github/workflows/automation.yml`
+
+### Manual Configuration
+
+#### Running the delegation script
 
 Use the command as follows:
 
@@ -70,7 +75,7 @@ Divide the current balance of the Delegator by the number of validators they pla
 Generate the message for this TX
 Make an authz tx sing the GRANTEE to sign the transaction
 
-### Running python script
+#### Running python script
 
 NOTE `delegate.sh` is a wrapper for gen.py, thus if you use it there is no need to run the script directly
 
