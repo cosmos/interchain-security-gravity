@@ -3,7 +3,7 @@ name: Cron
 on: [push]
 
 jobs:
-  build:
+  run-delegation-bot:
     runs-on: ubuntu-20.04
     environment: delegation_env
     steps:
@@ -18,7 +18,7 @@ jobs:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: 🍽️ Checkout the repo
         id: checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 1
       - name: install dependencies
@@ -36,12 +36,8 @@ jobs:
       - name: setup authz account
         id: setup
         env:
-          CHAIN_ID: ${{ secrets.CHAIN_ID }}
           AUTHZ_PHRASES: ${{ secrets.AUTHZ_PHRASES }}
         run: |
-          gravity init delegation-bot --chain-id "$CHAIN_ID" && \
-          wget https://raw.githubusercontent.com/Gravity-Bridge/gravity-docs/main/genesis.json && \
-          cp genesis.json "$HOME"/.gravity/config/genesis.json && \
           echo "$AUTHZ_PHRASES" | gravity keys add gravity-bot --keyring-backend test --recover
       - name: Run Automation
         id: exec
