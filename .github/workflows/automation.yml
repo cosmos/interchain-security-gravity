@@ -1,6 +1,8 @@
 name: Cron
 
-on: [push]
+on:
+  schedule:
+    - cron: "0 12 1,15 * *"
 
 jobs:
   run-delegation-bot:
@@ -26,7 +28,7 @@ jobs:
         run: |
           # update basic
           # install dependencies
-          sudo apt-get update && sudo apt-get install wget bash jq python3 -y && \
+          sudo apt-get update &&  sudo apt-get install wget bash jq python3 -y && \
           # download gravity bin
           wget https://github.com/Gravity-Bridge/Gravity-Bridge/releases/download/v1.4.0/gravity-linux-amd64 && \
           # configure gravity
