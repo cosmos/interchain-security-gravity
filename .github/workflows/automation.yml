@@ -13,7 +13,7 @@ jobs:
         uses: act10ns/slack@v1.5.0
         with:
           status: ${{ job.status }}
-          channel: "#cosmos-hub-internal"
+          channel: "#cosmos-hub-github-actions"
           steps: ${{ toJson(steps) }}
           message: Starting Gravity Delegation bot
         env:
