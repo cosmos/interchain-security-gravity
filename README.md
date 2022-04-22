@@ -4,6 +4,45 @@ A convenience tool designed to periodically run delegations for a wallet.
 the script can execute via cli or github actions.
 Please refer to the `.github/workflows/automation.yml` for details.
 
+### Github actions
+
+Configured to run at 12 noon on every 1st and 15th.
+
+### [Act](https://github.com/nektos/act)
+
+```bash
+# Install `act`
+brew install act
+
+# arch
+yay -S act
+```
+
+create .secrets file in repo root
+add following variables as secrets in file. e.g.
+
+```bash
+...
+NODE='https://localhost:26657'
+CHAIN_ID=chain-id-1
+AUTHZ_PHRASES='key key key'
+...
+```
+
+run on local:
+
+```bash
+act
+```
+
+### Development
+
+Follow local setup, run following command to get a live reloading runner
+
+```bash
+act -w
+```
+
 ### Environment Variables
 
 | Key              | Default | Description                                                                                                | Required |
