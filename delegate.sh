@@ -11,7 +11,7 @@ NODE='--node='"$NODE"
 CHAIN_ID='--chain-id='"$CHAIN_ID"
 
 if [[ -z $FROM_ADDRESS ]]; then
-	FROM_ADDRESS=$("$BINARY" keys show "$GRANTER" -a "$NODE") # delegator address
+	FROM_ADDRESS=$("$BINARY" keys show "$GRANTER" -a "$NODE" --keyring-backend test) # delegator address
 fi
 
 echo From Address "$FROM_ADDRESS"
