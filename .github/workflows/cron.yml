@@ -30,6 +30,9 @@ jobs:
       - name: install dependencies
         id: dependencies
         run: |
+          # setting delay so as to allow multisig delegation to run
+          sleep 30
+
           # update basic
           # install dependencies
           sudo apt-get update &&  sudo apt-get install wget bash jq python3 -y && \
