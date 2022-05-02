@@ -3,9 +3,13 @@ name: Cron
 on:
   schedule:
     - cron: "0 12 1,15 * *"
+  push:
+    branches:
+      - "main"
 
 jobs:
-  delegation-gravity1c4t4aqe74yyz624dm44u6xhfz9p8rx4f90jxjl:
+  # delegation-gravity1c4t4aqe74yyz624dm44u6xhfz9p8rx4f90jxjl:
+  delegation-community:
     runs-on: ubuntu-20.04
     environment: delegation_env
     steps:
@@ -15,7 +19,7 @@ jobs:
           status: ${{ job.status }}
           channel: "#cosmos-hub-github-actions"
           steps: ${{ toJson(steps) }}
-          message: Starting Gravity Delegation bot
+          message: Starting Gravity Delegation bot for community wallet
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: 🍽️ Checkout the repo
@@ -59,9 +63,11 @@ jobs:
           steps: ${{ toJson(steps) }}
         if: always()
         env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+          SLACK_WEBHOOK_URL:
+            ${{ secrets.SLACK_WEBHOOK_URL }}
 
-  delegation-gravity1zk4uwzygs4k2k5cz7y759sxcnv6qt3pd4g3pqq:
+            # delegation-gravity1zk4uwzygs4k2k5cz7y759sxcnv6qt3pd4g3pqq:
+  delegation-multisig:
     runs-on: ubuntu-20.04
     environment: delegation-gravity1zk4uwzygs4k2k5cz7y759sxcnv6qt3pd4g3pqq
     steps:
@@ -71,7 +77,7 @@ jobs:
           status: ${{ job.status }}
           channel: "#cosmos-hub-github-actions"
           steps: ${{ toJson(steps) }}
-          message: Starting Gravity Delegation bot
+          message: Starting Gravity Delegation bot for multisig wallet
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
       - name: 🍽️ Checkout the repo

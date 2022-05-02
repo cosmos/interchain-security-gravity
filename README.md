@@ -45,7 +45,7 @@ act -w
 
 ### Environment Variables
 
-NOTE: For multiple wallet delegation please configure new environments in setting for the repository.
+NOTE: For multiple wallet integration please configure new environments in setting for the repository.
 
 | Key              | Default | Description                                                                                                | Required |
 | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------- | -------- |
