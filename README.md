@@ -45,6 +45,8 @@ act -w
 
 ### Environment Variables
 
+NOTE: For multiple wallet integration please configure new environments in setting for the repository.
+
 | Key              | Default | Description                                                                                                | Required |
 | ---------------- | ------- | ---------------------------------------------------------------------------------------------------------- | -------- |
 | SLACK_WEBHOOK_UR |         | Bot webhook url. Refer [slack roles](https://slack.com/help/articles/360018112273-Types-of-roles-in-Slack) | [x]      |
