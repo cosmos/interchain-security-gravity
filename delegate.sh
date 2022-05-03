@@ -16,9 +16,9 @@ fi
 
 echo From Address "$FROM_ADDRESS"
 
-# # withdraw rewards for delegator if exists
-# "$BINARY" tx distribution withdraw-all-rewards "$NODE" "$CHAIN_ID" --keyring-backend test --from "$FROM_ADDRESS" --generate-only >./output/withdraw.json
-# "$BINARY" tx authz exec output/withdraw.json --from "$GRANTEE" --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
+# withdraw rewards for delegator if exists
+"$BINARY" tx distribution withdraw-all-rewards "$NODE" "$CHAIN_ID" --keyring-backend test --from "$FROM_ADDRESS" --generate-only >./output/withdraw.json
+"$BINARY" tx authz exec output/withdraw.json --from "$GRANTEE" --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
 
 # get account balance
 BALANCE=$("$BINARY" q bank balances "$FROM_ADDRESS" --output json "$CHAIN_ID" "$NODE" | jq --arg DENOM "$DENOM" -r '.balances | map(select(.denom==$DENOM))[0].amount')
