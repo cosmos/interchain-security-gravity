@@ -18,7 +18,10 @@ echo From Address "$FROM_ADDRESS"
 
 # withdraw rewards for delegator if exists
 "$BINARY" tx distribution withdraw-all-rewards "$NODE" "$CHAIN_ID" --keyring-backend test --from "$FROM_ADDRESS" --generate-only >./output/withdraw.json
-"$BINARY" tx authz exec output/withdraw.json --from "$GRANTEE" --gas auto --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
+"$BINARY" tx authz exec output/withdraw.json --from "$GRANTEE" --gas 3000000 --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
+
+echo "Sleeping so as to allow withdrawal tx to be confirmed"
+sleep 60
 
 # get account balance
 BALANCE=$("$BINARY" q bank balances "$FROM_ADDRESS" --output json "$CHAIN_ID" "$NODE" | jq --arg DENOM "$DENOM" -r '.balances | map(select(.denom==$DENOM))[0].amount')
@@ -45,4 +48,4 @@ jq '.validators' output/unsigned.json
 # run authz tx commands for doing delegation
 # execute the output of gen.py as a payload for authz tx
 echo executing authz from grantee account: "$GRANTEE"
-"$BINARY" tx authz exec output/unsigned.json --from "$GRANTEE" --gas auto --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
+"$BINARY" tx authz exec output/unsigned.json --from "$GRANTEE" --gas 3000000 --fees 0"$DENOM" "$NODE" "$CHAIN_ID" --keyring-backend test -y
